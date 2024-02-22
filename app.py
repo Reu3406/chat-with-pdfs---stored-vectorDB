@@ -57,7 +57,7 @@ def handle_userinput(user_question):
 
 
 # reading in system prompt instructions from text file
-prompt = open("https://github.com/Reu3406/chat-with-pdfs---stored-vectorDB/tree/main/prompt1.txt", mode="r").read()
+prompt = open("https://github.com/Reu3406/chat-with-pdfs---stored-vectorDB/blob/main/prompt1.txt", mode="r").read()
 
 
 # main function to converse with llm
