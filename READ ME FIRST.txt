@@ -1,0 +1,22 @@
+Before you use:
+install python and your IDE of choice
+open python IDE
+copy paste , input your openAI API key into the script and save the contents of the following text files as python scripts (.py file extension):
+	app.py
+	htmlTemplates.py
+	LLM_chatbot_localDB_noGUI.py
+	store_localDB.PY
+install/update the required python packages
+	pip install -r filepath/requirements.txt
+
+How to use:
+1.load in your PDFs into the <pdfs> folder
+2.open the <store_localDB> python script in python and run to create the <chroma_db> folder which will contain the embedding vectors of your document texts
+3. edit the prompt1.txt text file to contain your specific system intructions to the chatbot
+4. choose your prefered way to interact with the LLM chatbot
+
+the folder contains 2 ways to use the LLM document chatbot
+1. the "all in python way" - use the <LLM_chatbot_localDB_noGUI> python script
+2. through the G-AI-RY graphical user interface(GUI) powered by streamlit
+	open up the command prompt window for your windows PC - search CMD in windows start search bar
+	type in <streamlit run "folder address\app.py"> (without the <> marks) and press enter
