@@ -1,5 +1,5 @@
 streamlit==1.18.1
-sqlite3==3.35.0
+sqlite3
 altair==5.1.1
 chroma-hnswlib==0.7.3
 chromadb==0.4.12
