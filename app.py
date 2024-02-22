@@ -24,7 +24,7 @@ OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 # function to load in vector database from local address
 def get_vectorstore():
-    persist_directory = "C:\\Users\\reu34\\Desktop\\GAIRY_ver4\\chroma_db"
+    persist_directory = "https://github.com/Reu3406/chat-with-pdfs---stored-vectorDB/tree/main/chroma_db"
     embeddings = OpenAIEmbeddings(
         model="text-embedding-ada-002", openai_api_key=OPENAI_API_KEY
     )
@@ -57,7 +57,7 @@ def handle_userinput(user_question):
 
 
 # reading in system prompt instructions from text file
-prompt = open("C:\\Users\\reu34\\Desktop\\GAIRY_ver4\\prompt1.txt", mode="r").read()
+prompt = open("https://github.com/Reu3406/chat-with-pdfs---stored-vectorDB/tree/main/prompt1.txt", mode="r").read()
 
 
 # main function to converse with llm
