@@ -125,7 +125,7 @@ def main():
                 st.session_state.conversation = get_conversation_chain(vectorstore)
     # main header line
     st.header(
-        'Hi! Press the buttom above ask me anything about eczema'
+        'Hi! Press the button above ask me anything about eczema'
     )
     # creating input text field for question as well as the header for it
     user_question = st.text_input("what would you like to know ?")
