@@ -112,25 +112,11 @@ def main():
     st.set_page_config(page_title="AI clinical information assistant")
     st.write(css, unsafe_allow_html=True)
 
-    
-
     # initialising streamlit session state memory items
-    if 'conversation' not in st.session_state:
-        st.session_state.conversation = []
-    if 'chat_history' not in st.session_state:
-        st.session_state.chat_history = []
-        
-    if st.button("Start Engine"):
-        # initialising streamlit session state memory items
-        if 'conversation' not in st.session_state:
-            st.session_state.conversation = []
-        if 'chat_history' not in st.session_state:
-            st.session_state.chat_history = []
-        with st.spinner("Processing"):
-
-            vectorstore = get_vectorstore()
-            # create conversation chain
-            st.session_state.conversation = get_conversation_chain(vectorstore)
+    if "conversation" not in st.session_state:
+        st.session_state.conversation = None
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = None
 
     # main header line
     st.header(
@@ -143,7 +129,15 @@ def main():
     if user_question:
         handle_userinput(user_question)
 
-        
+    # the sidebar with the  start button to initialise everything
+    with st.sidebar:
+
+        if st.button("Start Engine"):
+            with st.spinner("Processing"):
+
+                vectorstore = get_vectorstore()
+                # create conversation chain
+                st.session_state.conversation = get_conversation_chain(vectorstore)
 
 
 if __name__ == "__main__":
