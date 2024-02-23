@@ -3,7 +3,9 @@
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-#import sqlite3
+
+import path
+import sys
 
 import streamlit as st
 from dotenv import load_dotenv
@@ -27,9 +29,14 @@ from langchain.vectorstores import Chroma
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 
+dir = path.Path(__file__).abspath()
+sys.path.append(dir.parent.parent)
+#path_to_model = './models/final_model.pkl'
+
+
 # function to load in vector database from local address
 def get_vectorstore():
-    persist_directory = "https://github.com/Reu3406/chat-with-pdfs---stored-vectorDB/tree/main/chroma_db"
+    persist_directory = "./chroma_db"
     embeddings = OpenAIEmbeddings(
         model="text-embedding-ada-002", openai_api_key=OPENAI_API_KEY
     )
