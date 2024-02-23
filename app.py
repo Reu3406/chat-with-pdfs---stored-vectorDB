@@ -117,17 +117,20 @@ def main():
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
-    btn=st.button("CLICK ME FIRST")
-    if btn:
+    if 'clicked' not in st.session_state:
+        st.session_state.clicked=False
+    if st.button("CLICK ME FIRST"):
             with st.spinner("Processing"):
 
                 vectorstore = get_vectorstore()
                 # create conversation chain
                 st.session_state.conversation = get_conversation_chain(vectorstore)
-                btn.text="DONE ! Proceed to enter question in text box below"
+                st.session_state.clicked=True
     # main header line
-    st.header(
-        'Hi ! Press the button above and ask me anything about eczema')
+    if session_state.click==False:
+        st.header('Hi ! Press the button above and ask me anything about eczema')
+    else:
+        st.header('Hi ! enter your question below and ask me anything about eczema')
     # creating input text field for question as well as the header for it
     user_question = st.text_input("what would you like to know ?")
 
