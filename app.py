@@ -78,7 +78,7 @@ prompt = open("./prompt1.txt", mode="r").read()
 def get_conversation_chain(vectorstore):
     # specifying LLM model and parameters
     llm = ChatOpenAI(
-        model="gpt-4", streaming=True, temperature=0, openai_api_key=OPENAI_API_KEY
+        model="gpt-3.5 turbo", streaming=True, temperature=0, openai_api_key=OPENAI_API_KEY
     )
     # injecting user question input from streamlit session state converstation memory
     user_template = "Question: {question}"
@@ -123,13 +123,14 @@ def main():
                 vectorstore = get_vectorstore()
                 # create conversation chain
                 st.session_state.conversation = get_conversation_chain(vectorstore)
-                st.header(
-        'Ask me anything about eczema'
-    )
+                
     # main header line
-    st.header(
-        'Hi! Press the button above ask me anything about eczema'
-    )
+    if st.button("CLICK ME FIRST"):
+        st.header(
+        'Ask me anything about eczema')
+    else
+        st.header(
+        'Hi! Press the button above and ask me anything about eczema')
     # creating input text field for question as well as the header for it
     user_question = st.text_input("what would you like to know ?")
 
