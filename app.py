@@ -114,7 +114,7 @@ def main():
 
     # initialising streamlit session state memory items
     #if "conversation" not in st.session_state:
-        st.session_state.conversation = get_conversation_chain(vectorstore)
+    st.session_state.conversation = get_conversation_chain(vectorstore)
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
     
