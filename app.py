@@ -1,5 +1,10 @@
 # chatting with Chatbot llm but with the GUI interface enabled by streamlit
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+import sqlite3
+
 import streamlit as st
 from dotenv import load_dotenv
 
