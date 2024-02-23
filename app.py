@@ -112,13 +112,13 @@ def main():
     st.set_page_config(page_title="AI clinical information assistant")
     st.write(css, unsafe_allow_html=True)
 
-    st.session_state[0:1]=["conversation","chat_history"]
+    
 
     # initialising streamlit session state memory items
-    #if "conversation" not in st.session_state:
-     #   st.session_state['conversation'] = None
-    #if "chat_history" not in st.session_state:
-     #   st.session_state['chat_history'] = None
+    if "conversation" not in st.session_state:
+        st.session_state['conversation'] = []
+    if "chat_history" not in st.session_state:
+        st.session_state['chat_history'] = []
 
     # main header line
     st.header(
