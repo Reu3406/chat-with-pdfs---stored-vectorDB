@@ -113,17 +113,17 @@ def main():
     st.write(css, unsafe_allow_html=True)
 
     # initialising streamlit session state memory items
-    #if "conversation" not in st.session_state:
-    st.session_state.conversation = get_conversation_chain(vectorstore)
+    if "conversation" not in st.session_state:
+        st.session_state.conversation = None
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
     
-    if st.button("CLICK ME FIRST"):
-            with st.spinner("Processing"):
-                vectorstore = get_vectorstore()
+    #if st.button("CLICK ME FIRST"):
+            #with st.spinner("Processing"):
+                #vectorstore = get_vectorstore()
                 
                 # create conversation chain
-                st.session_state.conversation = get_conversation_chain(vectorstore)
+                #st.session_state.conversation = get_conversation_chain(vectorstore)
                 
     # main header line
     st.header('Hi ! Press the button above and ask me anything about eczema')
@@ -135,15 +135,15 @@ def main():
     if user_question:
         handle_userinput(user_question)
 
-    # the sidebar with the  start button to initialise everything
-    #with st.sidebar:
+    the sidebar with the  start button to initialise everything
+    with st.sidebar:
 
-        #if st.button("Start Engine"):
-            #with st.spinner("Processing"):
+        if st.button("Start Engine"):
+            with st.spinner("Processing"):
 
-                #vectorstore = get_vectorstore()
-                # create conversation chain
-                #st.session_state.conversation = get_conversation_chain(vectorstore)
+                vectorstore = get_vectorstore()
+                #create conversation chain
+                st.session_state.conversation = get_conversation_chain(vectorstore)
 
 
 if __name__ == "__main__":
