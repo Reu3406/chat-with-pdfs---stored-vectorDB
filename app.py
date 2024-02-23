@@ -113,17 +113,18 @@ def main():
     st.write(css, unsafe_allow_html=True)
 
     # initialising streamlit session state memory items
-   # if "conversation" not in st.session_state:
-        #st.session_state.conversation = None
-    #if "chat_history" not in st.session_state:
-       # st.session_state.chat_history = None
+    if "conversation" not in st.session_state:
+        st.session_state.conversation = None
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = None
     
     if st.button("CLICK ME FIRST"):
             with st.spinner("Processing"):
                 vectorstore = get_vectorstore()
+                
                 # create conversation chain
                 st.session_state.conversation = get_conversation_chain(vectorstore)
-                st.session_state.clicked=True
+                
     # main header line
     st.header('Hi ! Press the button above and ask me anything about eczema')
 
