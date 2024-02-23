@@ -69,11 +69,7 @@ def handle_userinput(user_question):
 
 
 # reading in system prompt instructions from text file
-#prompt = open("https://github.com/Reu3406/chat-with-pdfs---stored-vectorDB/blob/main/prompt1.txt", mode="r").read()
-prompt='''You are assuming the role of a clinical assistant. You are provided with an educational material. Your task is to only use the material provided to answer questions. if no answer is found within the material, reply with sorry i'm unable to answer your question, please check with your doctor who will better advise you
-
-answer question only relying on the material provided. you can recommend likely diagnosis and treatments but always refer the patient to check with their doctor. do not give a definitive diagnosis or treatment. 
-'''
+prompt = open("./prompt1.txt", mode="r").read()
 
 # main function to converse with llm
 def get_conversation_chain(vectorstore):
