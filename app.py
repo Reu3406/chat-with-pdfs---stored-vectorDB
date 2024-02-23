@@ -78,7 +78,7 @@ prompt = open("./prompt1.txt", mode="r").read()
 def get_conversation_chain(vectorstore):
     # specifying LLM model and parameters
     llm = ChatOpenAI(
-        model="gpt-3.5 turbo", streaming=True, temperature=0, openai_api_key=OPENAI_API_KEY
+        model="gpt-4", streaming=True, temperature=0, openai_api_key=OPENAI_API_KEY
     )
     # injecting user question input from streamlit session state converstation memory
     user_template = "Question: {question}"
