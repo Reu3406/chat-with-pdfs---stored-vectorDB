@@ -114,9 +114,9 @@ def main():
 
     # initialising streamlit session state memory items
     if "conversation" not in st.session_state:
-        st.session_state.conversation = None
+        st.session_state['conversation'] = 'value'
     if "chat_history" not in st.session_state:
-        st.session_state.chat_history = None
+        st.session_state['chat_history'] = 'value'
 
     # main header line
     st.header(
