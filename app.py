@@ -135,7 +135,7 @@ def main():
     if user_question:
         handle_userinput(user_question)
 
-    the sidebar with the  start button to initialise everything
+    #the sidebar with the  start button to initialise everything
     with st.sidebar:
 
         if st.button("Start Engine"):
