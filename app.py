@@ -111,6 +111,7 @@ def main():
     # setting up title for the webpage
     st.set_page_config(page_title="AI clinical information assistant")
     st.write(css, unsafe_allow_html=True)
+    st.session_state=[]
 
     # initialising streamlit session state memory items
     if "conversation" not in st.session_state:
