@@ -127,7 +127,7 @@ def main():
                 st.session_state.conversation = get_conversation_chain(vectorstore)
                 st.session_state.clicked=True
     # main header line
-    if session_state.click==False:
+    if session_state.clicked==False:
         st.header('Hi ! Press the button above and ask me anything about eczema')
     else:
         st.header('Hi ! enter your question below and ask me anything about eczema')
