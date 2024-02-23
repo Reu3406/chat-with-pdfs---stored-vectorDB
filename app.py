@@ -1,9 +1,12 @@
 # chatting with Chatbot llm but with the GUI interface enabled by streamlit
 
+#resolving streamlit's outdated sqlite3 version incompatibility with chroma package
+#regular pip install of sqlite3 via requirements file doesn't work , so install sqlite3-binary
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
+#path package to find the local virtual address where streamlit clones the github repo to
 import path
 import sys
 
@@ -28,10 +31,10 @@ from langchain.vectorstores import Chroma
 #  api_key for openai models
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
-
+#locating local machine filepath address 
 dir = path.Path(__file__).abspath()
 sys.path.append(dir.parent.parent)
-#path_to_model = './models/final_model.pkl'
+#reference using  ./
 
 
 # function to load in vector database from local address
@@ -117,10 +120,10 @@ def main():
 
     # main header line
     st.header(
-        "Hi! i'm G-AI-RY, your document assistant. Press the start button at the side and ask me about the documents you converted into the vectorDB"
+        "Hi! Press > at the top left and then press the "start" button and ask me anything about your skin condition"
     )
     # creating input text field for question as well as the header for it
-    user_question = st.text_input("what would you like to know about your documents?")
+    user_question = st.text_input("what would you like to know ?")
 
     # what happens when question is entered
     if user_question:
