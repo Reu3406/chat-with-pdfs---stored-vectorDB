@@ -137,8 +137,10 @@ def main():
         if st.button("Start Engine"):
             with st.spinner("Processing"):
                 # initialising streamlit session state memory items
-                st.session_state['conversation'] = []
-                st.session_state['chat_history'] = []
+                if 'conversation' not in st.session_state:
+                    st.session_state.conversation = []
+                if 'chat_history' not in st.session_state:
+                    st.session_state.chat_history = []
 
                 vectorstore = get_vectorstore()
                 # create conversation chain
