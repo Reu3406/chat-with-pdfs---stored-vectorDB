@@ -128,7 +128,7 @@ def main():
     if st.button("CLICK ME FIRST"):
         st.header(
         'Ask me anything about eczema')
-    else
+    else:
         st.header(
         'Hi! Press the button above and ask me anything about eczema')
     # creating input text field for question as well as the header for it
