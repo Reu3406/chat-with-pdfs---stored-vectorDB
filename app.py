@@ -117,32 +117,26 @@ def main():
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
-    
-    #if st.button("CLICK ME FIRST"):
-            #with st.spinner("Processing"):
-                #vectorstore = get_vectorstore()
-                
-                # create conversation chain
-                #st.session_state.conversation = get_conversation_chain(vectorstore)
-                
-    # main header line
-    st.header('Hi ! Press the button above and ask me anything about eczema')
 
+    # main header line
+    st.header(
+        "Hi! i'm G-AI-RY, your document assistant. Press the start button at the side and ask me about the documents you converted into the vectorDB"
+    )
     # creating input text field for question as well as the header for it
-    user_question = st.text_input("what would you like to know ?")
+    user_question = st.text_input("what would you like to know about your documents?")
 
     # what happens when question is entered
     if user_question:
         handle_userinput(user_question)
 
-    #the sidebar with the  start button to initialise everything
+    # the sidebar with the  start button to initialise everything
     with st.sidebar:
 
         if st.button("Start Engine"):
             with st.spinner("Processing"):
 
                 vectorstore = get_vectorstore()
-                #create conversation chain
+                # create conversation chain
                 st.session_state.conversation = get_conversation_chain(vectorstore)
 
 
