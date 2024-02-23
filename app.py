@@ -120,7 +120,7 @@ def main():
 
     # main header line
     st.header(
-        "Hi! Press > at the top left and then press the "start" button and ask me anything about your skin condition"
+        'Hi! Press > at the top left and then press the "start" button and ask me anything about your skin condition'
     )
     # creating input text field for question as well as the header for it
     user_question = st.text_input("what would you like to know ?")
