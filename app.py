@@ -78,7 +78,7 @@ prompt = open("./prompt1.txt", mode="r").read()
 def get_conversation_chain(vectorstore):
     # specifying LLM model and parameters
     llm = ChatOpenAI(
-        model="gpt-3.5 turbo", streaming=True, temperature=0, openai_api_key=OPENAI_API_KEY
+        model="gpt-4", streaming=True, temperature=0, openai_api_key=OPENAI_API_KEY
     )
     # injecting user question input from streamlit session state converstation memory
     user_template = "Question: {question}"
@@ -114,21 +114,18 @@ def main():
 
     # initialising streamlit session state memory items
     if "conversation" not in st.session_state:
-        st.session_state.conversation = ['']
+        st.session_state.conversation = None
     if "chat_history" not in st.session_state:
-        st.session_state.chat_history = ['']
+        st.session_state.chat_history = None
+    if st.button("CLICK ME FIRST"):
+            with st.spinner("Processing"):
 
-    if st.button("Start Engine"):
-        with st.spinner("Processing"):
-            vectorstore = get_vectorstore()
-            # create conversation chain
-            st.session_state.conversation = get_conversation_chain(vectorstore)
-
-    
-
+                vectorstore = get_vectorstore()
+                # create conversation chain
+                st.session_state.conversation = get_conversation_chain(vectorstore)
     # main header line
     st.header(
-        "Hi ! Press the button above and ask me anything about eczema"
+        'Hi! Press the button above ask me anything about eczema'
     )
     # creating input text field for question as well as the header for it
     user_question = st.text_input("what would you like to know ?")
@@ -137,7 +134,15 @@ def main():
     if user_question:
         handle_userinput(user_question)
 
-        
+    # the sidebar with the  start button to initialise everything
+    #with st.sidebar:
+
+        #if st.button("Start Engine"):
+            #with st.spinner("Processing"):
+
+                #vectorstore = get_vectorstore()
+                # create conversation chain
+                #st.session_state.conversation = get_conversation_chain(vectorstore)
 
 
 if __name__ == "__main__":
