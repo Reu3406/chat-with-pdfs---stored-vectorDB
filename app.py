@@ -111,27 +111,22 @@ def main():
     # setting up title for the webpage
     st.set_page_config(page_title="AI clinical information assistant")
     st.write(css, unsafe_allow_html=True)
-    st.session_state=[]
 
     # initialising streamlit session state memory items
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
-    if 'clicked' not in st.session_state:
-        st.session_state.clicked=False
+    
     if st.button("CLICK ME FIRST"):
             with st.spinner("Processing"):
-
                 vectorstore = get_vectorstore()
                 # create conversation chain
                 st.session_state.conversation = get_conversation_chain(vectorstore)
                 st.session_state.clicked=True
     # main header line
-    if session_state.clicked==False:
-        st.header('Hi ! Press the button above and ask me anything about eczema')
-    else:
-        st.header('Hi ! enter your question below and ask me anything about eczema')
+    st.header('Hi ! Press the button above and ask me anything about eczema')
+
     # creating input text field for question as well as the header for it
     user_question = st.text_input("what would you like to know ?")
 
