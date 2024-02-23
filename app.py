@@ -117,7 +117,7 @@ def main():
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
-    if st.button("~CLICK ME FIRST~"):
+    if st.button("CLICK ME FIRST"):
             with st.spinner("Processing"):
 
                 vectorstore = get_vectorstore()
