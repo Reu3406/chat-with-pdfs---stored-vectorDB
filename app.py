@@ -123,6 +123,9 @@ def main():
                 vectorstore = get_vectorstore()
                 # create conversation chain
                 st.session_state.conversation = get_conversation_chain(vectorstore)
+                st.header(
+        'Ask me anything about eczema'
+    )
     # main header line
     st.header(
         'Hi! Press the button above ask me anything about eczema'
