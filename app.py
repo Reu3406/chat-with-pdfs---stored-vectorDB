@@ -11,7 +11,6 @@ import path
 import sys
 
 import streamlit as st
-from dotenv import load_dotenv
 
 from langchain.embeddings import OpenAIEmbeddings
 
@@ -27,6 +26,8 @@ from langchain.prompts import (
     HumanMessagePromptTemplate,
 )
 from langchain.vectorstores import Chroma
+
+import pandas as pd
 
 #  api_key for openai models
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
@@ -121,6 +122,11 @@ def main():
 
     if st.button("PRESS ME FIRST"):
             with st.spinner("Processing"):
+                user=""
+                question_list=[]
+                name=st.text_input("Enter ID/name")
+                if name=:
+                    user=name
 
                 vectorstore = get_vectorstore()
                 # create conversation chain
@@ -135,6 +141,9 @@ def main():
     # what happens when question is entered
     if user_question:
         handle_userinput(user_question)
+        question_list.append(user_question)
+        user_question=pd.DataFrame({"User":user,"questions":question_list})
+        st.download_button("Download Log",user_question.to_csv(),file_name=f'{user}_question_list.csv',mime='text/csv')
 
 
         
