@@ -121,9 +121,9 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    name=st.text_input("Enter ID/name")
+    name=st.text_input("Enter ID/name First before asking your question")
 
-    if name and st.button("Enter ID and PRESS ME FIRST"):
+    if name:
         user=name
         with st.spinner("Processing"):
             vectorstore = get_vectorstore()
