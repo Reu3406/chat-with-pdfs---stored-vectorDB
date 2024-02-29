@@ -141,7 +141,7 @@ def main():
     if user_question:
         handle_userinput(user_question)
         
-        question_list.append(user_question)
+    question_list.append(user_question)
     if name and len(question_list)>0:
         user_questionlist=pd.concat([user_questionlist,pd.DataFrame({"User":user,"questions":question_list})])
         st.download_button("Download Log",user_questionlist.to_csv(),file_name=f'{user}_question_list.csv',mime='text/csv')
