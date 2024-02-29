@@ -142,7 +142,7 @@ def main():
         question_list.append(user_question)
         handle_userinput(user_question)
         
-        user_questionlist=pd.concat(user_questionlist,pd.DataFrame({"User":user,"questions":question_list}))
+        user_questionlist=user_questionlist.concat(pd.DataFrame({"User":user,"questions":question_list}))
         st.download_button("Download Log",user_questionlist.to_csv(),file_name=f'{user[0]}_question_list.csv',mime='text/csv')
 
 
