@@ -138,6 +138,7 @@ def main():
     user_question = st.text_input("what would you like to know ?")
 
     # what happens when question is entered
+    current_question=""
     if user_question:
         handle_userinput(user_question)
         current_question=user_question
