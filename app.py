@@ -122,8 +122,6 @@ def main():
 
     if st.button("PRESS ME FIRST"):
             with st.spinner("Processing"):
-                user=""
-                
                 name=st.text_input("Enter ID/name")
                 if name:
                     user=name
