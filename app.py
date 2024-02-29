@@ -123,7 +123,7 @@ def main():
 
     name=st.text_input("Enter ID/name")
 
-    if name AND st.button("Enter ID and PRESS ME FIRST"):
+    if name and st.button("Enter ID and PRESS ME FIRST"):
         user=name
         with st.spinner("Processing"):
             vectorstore = get_vectorstore()
