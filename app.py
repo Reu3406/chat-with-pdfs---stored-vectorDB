@@ -111,7 +111,7 @@ def get_conversation_chain(vectorstore):
 def main():
     question_list=[]
     user=[]
-    user_question=pd.DataFrame({"User":[],"questions":[]})
+    user_questionlist=pd.DataFrame({"User":[],"questions":[]})
     # setting up title for the webpage
     st.set_page_config(page_title="AI clinical information assistant")
     st.write(css, unsafe_allow_html=True)
@@ -142,8 +142,8 @@ def main():
         question_list.append(user_question)
         handle_userinput(user_question)
         
-        user_question=user_question.append(pd.DataFrame({"User":user,"questions":question_list}))
-        st.download_button("Download Log",user_question.to_csv(),file_name=f'{user}_question_list.csv',mime='text/csv')
+        user_questionlist=user_questionlist.append(pd.DataFrame({"User":user,"questions":question_list}))
+        st.download_button("Download Log",user_questionlist.to_csv(),file_name=f'{user[0]}_question_list.csv',mime='text/csv')
 
 
         
