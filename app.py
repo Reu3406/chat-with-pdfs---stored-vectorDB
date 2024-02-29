@@ -110,7 +110,7 @@ def get_conversation_chain(vectorstore):
 # assembling all the streamlit elements and the functions above into the main function which will run once the streamlit GUI window is opened
 def main():
     question_list=[]
-    user=""
+    user=[]
     # setting up title for the webpage
     st.set_page_config(page_title="AI clinical information assistant")
     st.write(css, unsafe_allow_html=True)
@@ -124,7 +124,7 @@ def main():
     name=st.text_input("Enter ID/name First before asking your question")
 
     if name:
-        user=name
+        user.append(name)
         with st.spinner("Processing"):
             vectorstore = get_vectorstore()
             # create conversation chain
@@ -137,12 +137,11 @@ def main():
     user_question = st.text_input("what would you like to know ?")
 
     # what happens when question is entered
-    question_list=[]
     if user_question:
         question_list.append(user_question)
         handle_userinput(user_question)
         
-    user_question=pd.DataFrame({"User":user,"questions":question_list})
+        user_question=pd.DataFrame({"User":user,"questions":question_list})
     st.download_button("Download Log",user_question.to_csv(),file_name=f'{user}_question_list.csv',mime='text/csv')
 
 
