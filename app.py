@@ -123,7 +123,7 @@ def main():
     if st.button("PRESS ME FIRST"):
             with st.spinner("Processing"):
                 user=""
-                question_list=[]
+                
                 name=st.text_input("Enter ID/name")
                 if name:
                     user=name
@@ -139,6 +139,7 @@ def main():
     user_question = st.text_input("what would you like to know ?")
 
     # what happens when question is entered
+    question_list=[]
     if user_question:
         handle_userinput(user_question)
         question_list.append(user_question)
