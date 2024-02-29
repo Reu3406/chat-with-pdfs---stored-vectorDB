@@ -109,7 +109,8 @@ def get_conversation_chain(vectorstore):
 
 # assembling all the streamlit elements and the functions above into the main function which will run once the streamlit GUI window is opened
 def main():
-
+    question_list=[]
+    user=""
     # setting up title for the webpage
     st.set_page_config(page_title="AI clinical information assistant")
     st.write(css, unsafe_allow_html=True)
@@ -119,17 +120,15 @@ def main():
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
-    user=""
 
-    if st.button("PRESS ME FIRST"):
-            with st.spinner("Processing"):
-                name=st.text_input("Enter ID/name")
-                if name:
-                    user=name
+    name=st.text_input("Enter ID/name")
 
-                vectorstore = get_vectorstore()
-                # create conversation chain
-                st.session_state.conversation = get_conversation_chain(vectorstore)
+    if name AND st.button("Enter ID and PRESS ME FIRST"):
+        user=name
+        with st.spinner("Processing"):
+            vectorstore = get_vectorstore()
+            # create conversation chain
+            st.session_state.conversation = get_conversation_chain(vectorstore)
     # main header line
     st.header(
         'Hi ! Press the button above and ask me anything about eczema'
@@ -140,10 +139,11 @@ def main():
     # what happens when question is entered
     question_list=[]
     if user_question:
-        handle_userinput(user_question)
         question_list.append(user_question)
-        user_question=pd.DataFrame({"User":user,"questions":question_list})
-        st.download_button("Download Log",user_question.to_csv(),file_name=f'{user}_question_list.csv',mime='text/csv')
+        handle_userinput(user_question)
+        
+    user_question=pd.DataFrame({"User":user,"questions":question_list})
+    st.download_button("Download Log",user_question.to_csv(),file_name=f'{user}_question_list.csv',mime='text/csv')
 
 
         
