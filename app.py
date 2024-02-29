@@ -125,7 +125,7 @@ def main():
                 user=""
                 question_list=[]
                 name=st.text_input("Enter ID/name")
-                if name=:
+                if name:
                     user=name
 
                 vectorstore = get_vectorstore()
