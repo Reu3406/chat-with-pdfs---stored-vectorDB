@@ -109,9 +109,12 @@ def get_conversation_chain(vectorstore):
 
 # assembling all the streamlit elements and the functions above into the main function which will run once the streamlit GUI window is opened
 def main():
-    question_list=[]
-    user=""
-    user_questionlist=pd.DataFrame({"User":[],"questions":[]})
+    if "question_list" not in st.session_state:
+        st.session_state.question_list=[]
+    if "user" not in st.session_state:
+        st.session_state.user=""
+    if "user_questionlist" not in st.session_state:
+        st.session_state.user_questionlist=pd.DataFrame({"User":[],"questions":[]})
     # setting up title for the webpage
     st.set_page_config(page_title="AI clinical information assistant")
     st.write(css, unsafe_allow_html=True)
@@ -125,14 +128,14 @@ def main():
     name=st.text_input("Enter ID/name First before asking your question")
 
     if name:
-        user=name
+        st.session_state.user=name
         with st.spinner("Processing"):
             vectorstore = get_vectorstore()
             # create conversation chain
             st.session_state.conversation = get_conversation_chain(vectorstore)
     # main header line
     st.header(
-        'Hi ! Press the button above and ask me anything about eczema'
+        'Hi ! Press enter your ID/name above and ask me anything about eczema'
     )
     # creating input text field for question as well as the header for it
     user_question = st.text_input("what would you like to know ?")
@@ -141,10 +144,10 @@ def main():
     if user_question:
         handle_userinput(user_question)
         
-    question_list.append(user_question)
-    if name and len(question_list)>0:
-        user_questionlist=pd.concat([user_questionlist,pd.DataFrame({"User":user,"questions":question_list})])
-        st.download_button("Download Log",user_questionlist.to_csv(),file_name=f'{user}_question_list.csv',mime='text/csv')
+        st.session_state.question_list.append(user_question)
+    if name and len(st.session_state.question_list)>0:
+        st.session_state.user_questionlist=pd.concat([st.session_state.user_questionlist,pd.DataFrame({"User":st.session_state.user,"questions":st.session_state.question_list})])
+        st.download_button("Download Log",st.session_state.user_questionlist.to_csv(),file_name=f'{st.session_state.user}_question_list.csv',mime='text/csv')
 
 
         
