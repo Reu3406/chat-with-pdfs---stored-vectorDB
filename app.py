@@ -141,11 +141,10 @@ def main():
     user_question = st.text_input("what would you like to know ?")
 
     # what happens when question is entered
-    if user_question:
+    if user_question and name:
         handle_userinput(user_question)
-        
         st.session_state.question_list.append(user_question)
-    if not name and user_question:
+    else:
         st.error("Please enter your Name/ID before asking your question")
     if name and len(st.session_state.question_list)>0:
         st.session_state.user_questionlist=pd.DataFrame({"User":st.session_state.user,"questions":st.session_state.question_list})
