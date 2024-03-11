@@ -126,7 +126,7 @@ def main():
         st.session_state.chat_history = None
 
     name=st.text_input("Enter ID/name First before asking your question")
-
+    
     if name:
         st.session_state.user=name
         with st.spinner("Processing"):
@@ -138,13 +138,15 @@ def main():
         'Hi ! Press enter your ID/name above and ask me anything about eczema'
     )
     # creating input text field for question as well as the header for it
-    user_question = st.text_input("what would you like to know ?")
+    user_question = st.text_input(red["what would you like to know ?"])
 
     # what happens when question is entered
     if user_question:
         handle_userinput(user_question)
         
         st.session_state.question_list.append(user_question)
+    if name="" and user_question:
+        st.write("Please enter your Name/ID before asking your question")
     if name and len(st.session_state.question_list)>0:
         st.session_state.user_questionlist=pd.DataFrame({"User":st.session_state.user,"questions":st.session_state.question_list})
         st.download_button("Download Log",st.session_state.user_questionlist.to_csv(),file_name=f'{st.session_state.user}_question_list.csv',mime='text/csv')
