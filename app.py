@@ -145,7 +145,7 @@ def main():
         handle_userinput(user_question)
         
         st.session_state.question_list.append(user_question)
-    if st.session_state.user="" and user_question:
+    if st.session_state.user=="" and user_question:
         st.write(red["Please enter your Name/ID before asking your question"])
     if name and len(st.session_state.question_list)>0:
         st.session_state.user_questionlist=pd.DataFrame({"User":st.session_state.user,"questions":st.session_state.question_list})
