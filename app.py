@@ -146,7 +146,7 @@ def main():
         
         st.session_state.question_list.append(user_question)
     if name and len(st.session_state.question_list)>0:
-        st.session_state.user_questionlist=pd.concat([st.session_state.user_questionlist,pd.DataFrame({"User":st.session_state.user,"questions":st.session_state.question_list})])
+        st.session_state.user_questionlist=pd.DataFrame({"User":st.session_state.user,"questions":st.session_state.question_list})
         st.download_button("Download Log",st.session_state.user_questionlist.to_csv(),file_name=f'{st.session_state.user}_question_list.csv',mime='text/csv')
 
 
