@@ -70,6 +70,7 @@ def handle_userinput(user_question):
             st.write(
                 bot_template.replace("{{MSG}}", message.content), unsafe_allow_html=True
             )
+            st.session_state.answers.append(message.content)
 
 
 # reading in system prompt instructions from text file
@@ -111,6 +112,8 @@ def get_conversation_chain(vectorstore):
 def main():
     if "question_list" not in st.session_state:
         st.session_state.question_list=[]
+    if "answers" not in st.session_state:
+        st.session_state.answers=[]
     if "user" not in st.session_state:
         st.session_state.user=""
     if "user_questionlist" not in st.session_state:
@@ -149,7 +152,6 @@ def main():
             st.error("Please enter your Name/ID before asking your question")
         
     if name and len(st.session_state.question_list)>0:
-        st.session_state.answers=st.session_state.chat_history[1::2].content
         st.session_state.user_questionlist=pd.DataFrame({"User":st.session_state.user,"questions":st.session_state.question_list,"answers":st.session_state.answers})
         st.download_button("Download Log",st.session_state.user_questionlist.to_csv(),file_name=f'{st.session_state.user}_question_list.csv',mime='text/csv')
 
